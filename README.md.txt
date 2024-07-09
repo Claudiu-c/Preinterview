@@ -1,6 +1,6 @@
 Setup and run instructions
 
-prerequisites:
+Prerequisites:
 
 -python 3.x
 -pandas library: "pip install pandas"
@@ -8,8 +8,8 @@ prerequisites:
 
 Run the application:
 
-1. Unzip the stock_price_data_files
-2. Copy the folders and paste them into the directory where you have the python script
-3. Run the script with the directory path and the number of files to process as arguments.
+1. After you downloaded and unzipped the file, open the preinterview.py script 
+2. Run the script with the directory path and the number of files to process as arguments.
+In addition: All the files needs to be in one folder, so LSE, NASDAQ and NYSE needs to be in the same folder / path as the script is.
 
 example run: python preinterview.py C:\Users\Claudiu\Desktop\pre-interview 5
