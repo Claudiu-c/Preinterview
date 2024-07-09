@@ -5,6 +5,7 @@ import random
 
 
 def read_csv(file_path):
+    # Reads a CSV file and returns a DataFrame
     try:
         data = pd.read_csv(
             file_path, header=None, names=["Stock-ID", "Timestamp", "Stock price value"]
@@ -18,6 +19,7 @@ def read_csv(file_path):
 
 
 def get_sample_data(data):
+    # Samples 30 consecutive data points from the DataFrame
     try:
         start_idx = random.randint(0, len(data) - 30)
         sample_data = data.iloc[start_idx : start_idx + 30].reset_index(drop=True)
@@ -29,6 +31,7 @@ def get_sample_data(data):
 
 
 def identify_outliers(sample_data):
+    # Identifies outliers in the sampled data based on a threshold
     mean_price = sample_data["Stock price value"].mean()
     std_dev = sample_data["Stock price value"].std()
     threshold = mean_price + 2 * std_dev
@@ -47,6 +50,7 @@ def identify_outliers(sample_data):
 
 
 def save_outliers(outliers, output_file):
+    # Saves the outliers DataFrame to a CSV file
     try:
         outliers.to_csv(output_file, index=False)
         print(f"Outliers saved to {output_file}")
@@ -55,6 +59,7 @@ def save_outliers(outliers, output_file):
 
 
 def process_file(file_path):
+    # Processes a single CSV file to identify and save outliers
     print(f"Processing file: {file_path}")
     data = read_csv(file_path)
     if data is not None and len(data) >= 30:
@@ -75,6 +80,7 @@ def process_file(file_path):
 
 
 def main(input_directory, num_files_to_process):
+    # Main function to process multiple CSV files in the given directory
     try:
         files = []
         for root, dirs, filenames in os.walk(input_directory):
